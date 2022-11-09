@@ -4,13 +4,13 @@ function mergeSort(arr){
     if(arr.length > 1){
         left = arr.slice(0, arr.length / 2);
         right = arr.slice(arr.length / 2, arr.length);
-        return funky(mergeSort(left), mergeSort(right));
+        return merge(mergeSort(left), mergeSort(right));
     }
     return arr;
 }
 
 
-function funky(left, right){
+function merge(left, right){
     let result = [];
     let leftIndex = 0;
     let rightIndex = 0;
@@ -24,11 +24,13 @@ function funky(left, right){
             rightIndex++;
         }
     }
-    if(leftIndex < left.length){
+    while(leftIndex < left.length){
         result.push(left[leftIndex]);
+        leftIndex++;
     }
-    if(rightIndex < right.length){
+    while(rightIndex < right.length){
         result.push(right[rightIndex]);
+        rightIndex++;
     }
     console.log(left, right, result);
     return result; 
